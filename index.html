@@ -122,6 +122,8 @@ section{padding:64px 0}
 .price .unit{font-family:"IBM Plex Mono",monospace;font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);display:block;margin-top:8px;line-height:1.6}
 .card .buy{display:block;background:var(--ink);color:#fff;text-decoration:none;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:15px}
 .card .buy:hover{background:var(--orange);color:#fff}
+.card .buy.alt{background:var(--paper);color:var(--ink);border-top:1px solid var(--ink)}
+.card .buy.alt:hover{background:var(--paper);color:var(--orange)}
 .band{background:var(--field);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .faq{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px}
 .faq h4{font-family:"IBM Plex Sans",sans-serif;font-size:.98rem;font-weight:600;margin:0 0 7px}
@@ -140,6 +142,7 @@ section{padding:64px 0}
 <a class="brandmark" href="/"><span>Phoenix<br>Compliance Shop</span></a>
 <ul class="navlinks">
 <li><a href="#products">Products</a></li>
+<li><a href="/preview/">Preview</a></li>
 <li><a href="#buying">Buying</a></li>
 <li><a href="/terms-of-use.html">Terms</a></li>
 <li><a href="/privacy-policy.html">Privacy</a></li>
@@ -177,9 +180,10 @@ section{padding:64px 0}
 </ul>
 <div class="price">
 <div class="amt"><s>$5,000.00 USD</s>$3,750.00 USD</div>
-<span class="unit">Introductory price — first 5 licenses, or through 31&nbsp;October&nbsp;2026, whichever comes first<br>One-time purchase · one laboratory facility</span>
+<span class="unit">Introductory price — first 5 licenses, or through 31&nbsp;October&nbsp;2026, whichever comes first<br>One-time purchase &middot; one laboratory facility &middot; free 12-page preview available</span>
 </div>
-<a class="buy" href="mailto:bronwynr@phoenixlabconsulting.com?subject=NYSDOH%20CLEP%20Compliance%20System">Enquire or request an invoice</a>
+<a class="buy" href="/preview/" data-pv>See it first &mdash; request the free preview</a>
+<a class="buy alt" href="mailto:bronwynr@phoenixlabconsulting.com?subject=NYSDOH%20CLEP%20Compliance%20System">Enquire or request an invoice</a>
 </div>
 <div class="card">
 <div class="card-h">
@@ -208,11 +212,12 @@ section{padding:64px 0}
 <p class="note">Card checkout is being activated. Until it is live, email us and we will invoice you directly.</p>
 </div></div>
 <div class="faq">
+<div><h4>Can I see it before I buy?</h4><p>Yes. A free 12-page preview shows the complete manual table of contents, three sample pages, the full 40-tab workbook inventory, and figures from the workbook. It states the price. <a href="/preview/" data-pv>Request the preview</a>.</p></div>
 <div><h4>Who you are buying from</h4><p>Phoenix Compliance Shop is a registered trade name of Phoenix Laboratory Consulting, LLC, a Kentucky limited liability company. Orders are processed by FastSpring, our authorized reseller and Merchant of Record, which appears on your statement.</p></div>
 <div><h4>Delivery</h4><p>Electronic download immediately after payment clears. The manual is delivered as a PDF stamped with the purchaser's name and order reference; the workbook and forms library are delivered as separate files.</p></div>
 <div><h4>Purchase orders and invoicing</h4><p>Supported. Many laboratories cannot put a five-figure purchase on a card. Email us with your billing contact and we will issue an invoice; payment by ACH or check is fine.</p></div>
-<div><h4>License scope</h4><p>Each purchase authorizes use by one legal laboratory entity under a single CLIA license or Permanent Facility Identifier (PFI). Multi-site systems, parent corporations, and affiliated laboratories require separate licenses. Ask us for a multi-site quote.</p></div>
-<div><h4>Refunds</h4><p>Full refund within 14 days if you have not downloaded any file, or for the Control Finder, not used any token. No refund once files have been downloaded — see the <a href="/refund-policy.html">Refund Policy</a> for the named exceptions.</p></div>
+<div><h4>License scope</h4><p>Each purchase authorizes use at one laboratory facility, identified by its CLIA license number or NYSDOH Permanent Facility Identifier (PFI). Multi-site systems, parent corporations, and affiliated laboratories require separate licenses. Ask us for a multi-site quote.</p></div>
+<div><h4>Refunds</h4><p>Full refund within 14 days if you have not downloaded any file, or for the Control Finder, not used any token. No refund once files have been downloaded &mdash; see the <a href="/refund-policy.html">Refund Policy</a> for the named exceptions. The <a href="/preview/" data-pv>free preview</a> is there so the purchase is an informed one.</p></div>
 <div><h4>What is not included</h4><p>No consulting, no support, no review of your validation data or submission packets, and no guarantee of any regulatory outcome. Consulting engagements are handled separately by <a href="https://phoenixlabconsulting.com">Phoenix Laboratory Consulting</a>.</p></div>
 </div>
 </div></section>
@@ -244,6 +249,8 @@ function cur(){return r.getAttribute('data-theme')||(window.matchMedia('(prefers
 if(s){r.setAttribute('data-theme',s)}
 function lbl(){b.textContent=cur()==='dark'?'Light':'Dark'}lbl();
 b.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('phx-theme',n)}catch(e){}lbl()})})();
+/* GATE 0 - preview CTA clicks, shop stream */
+Array.prototype.forEach.call(document.querySelectorAll('[data-pv]'),function(a){a.addEventListener('click',function(){gtag('event','preview_cta_click',{product:'nysdoh_clep_compliance_system',gate:'gate_0'})})});
 </script>
 </body>
 </html>
